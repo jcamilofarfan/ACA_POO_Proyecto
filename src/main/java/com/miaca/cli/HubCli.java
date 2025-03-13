@@ -2,9 +2,8 @@ package com.miaca.cli;
 
 import com.miaca.Task;
 
-
 public class HubCli extends Task {
-        int option;
+    int option;
 
     @Override
     public void execute() {
@@ -26,7 +25,7 @@ public class HubCli extends Task {
 
             try {
                 option = Integer.parseInt(scanner.nextLine());
-            } catch (NumberFormatException e ) {
+            } catch (NumberFormatException e) {
                 exit = continueExecution(true, "Invalid option entered. Do you want to try again?");
                 continue;
             }

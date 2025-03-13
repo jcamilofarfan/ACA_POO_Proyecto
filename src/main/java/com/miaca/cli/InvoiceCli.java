@@ -93,8 +93,10 @@ public class InvoiceCli extends Task {
             System.out.println("Subtotal: " + String.format(Locale.US, "%.2f", subtotal));
             System.out.println("IVA (19%): " + String.format(Locale.US, "%.2f", iva));
             if (discount > 0) {
-                System.out.println("Discount (10% if subtotal > 200,000): " + String.format(Locale.US, "%.2f", discount));
-            }            System.out.println("Total: " + String.format(Locale.US, "%.2f", total));
+                System.out
+                        .println("Discount (10% if subtotal > 200,000): " + String.format(Locale.US, "%.2f", discount));
+            }
+            System.out.println("Total: " + String.format(Locale.US, "%.2f", total));
             System.out.println("===================\n");
 
             if (continueExecution(false, "Do you want to generate another invoice?")) {

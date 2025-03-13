@@ -2,7 +2,6 @@ package com.miaca.cli;
 
 import com.miaca.Task;
 import com.miaca.services.RatesService;
-import com.miaca.tasks.ConversionRates;
 
 import java.util.Locale;
 import java.util.Set;
@@ -10,7 +9,7 @@ import java.util.Set;
 public class ConversionCli extends Task {
     private String currency;
     private double amount;
-    ConversionRates conversionRates = new ConversionRates(new RatesService());
+    RatesService ratesService = new RatesService();
 
     @Override
     public void execute() {
@@ -18,9 +17,9 @@ public class ConversionCli extends Task {
         while (!exit) {
             if (currency == null || currency.trim().isEmpty()) {
                 System.out.println("Enter target currency: ");
-                printAvailableCurrencies(conversionRates.getAvailableCurrencies());
+                printAvailableCurrencies(ratesService.getAvailableCurrencies());
                 currency = scanner.nextLine();
-                if (!conversionRates.getAvailableCurrencies().contains(currency.toUpperCase())) {
+                if (!ratesService.getAvailableCurrencies().contains(currency.toUpperCase())) {
                     currency = null;
                     amount = 0.0;
                     if (continueExecution(true, "Invalid currency entered. Do you want to try again?")) {
@@ -50,8 +49,8 @@ public class ConversionCli extends Task {
                 }
             }
 
-                double result = conversionRates.convert(currency.toUpperCase(), amount);
-                System.out.println("Result: " + String.format(Locale.US, "%.2f", result) + " " + currency.toUpperCase());
+            double result = ratesService.convert(currency.toUpperCase(), amount);
+            System.out.println("Result: " + String.format(Locale.US, "%.2f", result) + " " + currency.toUpperCase());
 
             if (continueExecution(false, "Do you want to convert another amount?")) {
                 currency = null;

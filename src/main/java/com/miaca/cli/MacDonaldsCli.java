@@ -4,6 +4,7 @@ import com.miaca.Task;
 
 public class MacDonaldsCli extends Task {
     private int age = 0;
+
     @Override
     public void execute() {
         boolean exit = false;

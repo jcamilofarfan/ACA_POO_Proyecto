@@ -6,6 +6,7 @@ public abstract class Task {
     public Scanner scanner = new Scanner(System.in);
 
     public abstract void execute();
+
     public boolean continueExecution(boolean error, String message) {
         if (error) {
             System.out.print(message);
