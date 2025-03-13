@@ -1,7 +1,6 @@
 package com.miaca;
 
 import java.util.Scanner;
-
 import com.miaca.cli.*;
 
 public class Main {
@@ -27,16 +26,16 @@ public class Main {
             try {
                 int option = Integer.parseInt(scanner.nextLine());
                 switch (option) {
-                    case 1 -> new ConversionCli().execute();
-                    case 2 -> new InvoiceCli().execute();
-                    case 3 -> new MacDonaldsCli().execute();
-                    case 4 -> new UnitConversionCli().execute();
-                    case 5 -> new AreaCli().execute();
-                    case 6 -> new GradeAverageCli().execute();
-                    case 7 -> new HospitalBudgetCli().execute();
-                    case 8 -> new PrimeNumbersCli().execute();
-                    case 9 -> new SumOfDigitsCli().execute();
-                    case 10 -> new LotteryCli().execute();
+                    case 1 -> executeTask(new ConversionCli());
+                    case 2 -> executeTask(new InvoiceCli());
+                    case 3 -> executeTask(new MacDonaldsCli());
+                    case 4 -> executeTask(new UnitConversionCli());
+                    case 5 -> executeTask(new AreaCli());
+                    case 6 -> executeTask(new GradeAverageCli());
+                    case 7 -> executeTask(new HospitalBudgetCli());
+                    case 8 -> executeTask(new PrimeNumbersCli());
+                    case 9 -> executeTask(new SumOfDigitsCli());
+                    case 10 -> executeTask(new LotteryCli());
                     case 0 -> {
                         System.out.println("Do you want to exit? (y/n)");
                         exit = scanner.nextLine().toLowerCase().startsWith("y");
@@ -48,5 +47,9 @@ public class Main {
             }
         }
         scanner.close();
+    }
+
+    static void executeTask(Task task) {
+        task.execute();
     }
 }
